@@ -16,6 +16,8 @@ set history=1000 "Store lots of :cmdline history
 set hlsearch "highlight searched words
 set showmatch "highlight matching parens
 
+set wildmenu
+set wildmode=longest:full,full
 
 " set the runtime path to include vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
