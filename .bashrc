@@ -120,7 +120,7 @@ PATH="$PATH:/home/jayshah/Downloads/flow/"
 eval $(opam config env)
 
 # added by Anaconda2 4.2.0 installer
-export PATH="/home/jayshah/anaconda2/bin:$PATH"
+# export PATH="/home/jayshah/anaconda2/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/jayshah/.sdkman"
@@ -129,3 +129,17 @@ export SDKMAN_DIR="/home/jayshah/.sdkman"
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 
+# make sure clang is there 
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+
+# depot-tools is a dependency that is used to compile v8
+# find out more at www.chromium.org/developers/how-tos/install-depot-tools
+export PATH=`pwd`/depot_tools:"$PATH"
+
+# these commands work faster if emacs is already loaded as a daemon at startup
+alias emax="emacsclient -t"                      # used to be "emacs -nw"
+alias semac="sudo emacsclient -t"                # used to be "sudo emacs -nw"
+alias emacsc="emacsclient -c -a emacs"           # new - opens the GUI with alternate non-daemon
+
+# make sure python-pip is installed via apt

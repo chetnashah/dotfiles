@@ -31,22 +31,37 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     haskell
+     python
+     markdown
+     (haskell :variables haskell-completion-backend 'company-ghci)
      javascript
+     react
      ocaml
+     racket
+     scheme
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     helm
      ivy
      elm
      auto-completion
+     (c-c++ :variables c-c++-enable-clang-support t)
+     (latex :variables latex-build-command "LaTeX"
+            latex-enable-auto-fill t
+            latex-enable-folding t)
+     ;; ruby jumping pre requisite: gem install pry
+     (ruby :variables ruby-enable-enh-ruby-mode t)
+     gtags
+     cscope
      ;; better-defaults
      emacs-lisp
      git
      ;; markdown
      org
+     shaders
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -306,6 +321,15 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (spacemacs/set-leader-keys "onb" 'nodejs-repl-send-buffer)
   (spacemacs/set-leader-keys "ons" 'nodejs-repl-send-region)
+  (require 'company)
+  (add-hook 'haskell-mode-hook 'company-mode)
+  (autoload 'ghc-init "ghc" nil t)
+  (autoload 'ghc-debug "ghc" nil t)
+  (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+  (add-to-list 'company-backends 'company-ghc)
+  (custom-set-variables '(company-ghc-show-info t))
+  (add-to-list 'company-backends '(company-anaconda :with company-capf))
+  (add-hook 'doc-view-mode-hook 'auto-rever-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
