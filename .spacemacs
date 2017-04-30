@@ -39,6 +39,7 @@ values."
      ocaml
      racket
      scheme
+     rust
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -60,7 +61,7 @@ values."
      emacs-lisp
      git
      ;; markdown
-     org
+     (org :variables org-enable-bootstrap-support t)
      shaders
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -153,7 +154,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -330,6 +331,7 @@ you should place your code here."
   (custom-set-variables '(company-ghc-show-info t))
   (add-to-list 'company-backends '(company-anaconda :with company-capf))
   (add-hook 'doc-view-mode-hook 'auto-rever-mode)
+  (setq rust-format-on-save t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

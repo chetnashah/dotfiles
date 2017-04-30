@@ -143,3 +143,9 @@ alias semac="sudo emacsclient -t"                # used to be "sudo emacs -nw"
 alias emacsc="emacsclient -c -a emacs"           # new - opens the GUI with alternate non-daemon
 
 # make sure python-pip is installed via apt
+
+
+# racer(rust autocomplete) needs rust-src + RUST_SRC_PATH
+export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+
+
